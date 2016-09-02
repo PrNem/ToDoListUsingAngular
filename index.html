@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script src="js/index.js" charset="utf-8"></script>
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css">  -->
+    <link rel="stylesheet" href="css/index.css">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+  </head>
+  <body data-ng-app="todoapp">
+<div class="container" data-ng-controller="TodoController">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	  <div class="navbar content">
+	    <h1>TO DO List</h1>
+	  </div>
+	</nav>
+
+	<section class="app-body">
+		<section class="archive-control">
+			<span>{{ remaining() }} of {{ todos.length }} remaining</span>
+			<p>[ <a href="" data-ng-click="archive()">Remove Completed Items</a> ]</p>
+		</section>
+
+		<ul class="unstyled">
+			<li data-ng-repeat="todo in todos track by $index">
+				<input type="checkbox" data-ng-model="todo.done">
+				<span class="done-{{ todo.done }}">{{ todo.text }}</span>
+			</li>
+		</ul>
+
+		<form data-ng-submit="addTodo()" class="todo-form">
+			<input type="text" data-ng-model="todoText" placeholder="Enter new ToDo item" />
+			<br />
+			<input type="submit" value="Add Task" />
+		</form>
+	</section>
+</div>
+  </body>
+</html>
